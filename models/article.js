@@ -13,10 +13,6 @@ const articleSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  markdown: {
-    type: String,
-    required: true,
-  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -30,21 +26,23 @@ const articleSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  sanitizedHtml: {
-    type: String,
-    required: true,
-  },
+  // markdown: {
+  //   type: String,
+  //   required: true,
+  // },
+  // sanitizedHtml: {
+  //   type: String,
+  //   required: false,
+  // },
 });
 
 articleSchema.pre('validate', function (next) {
   if (this.title) {
     this.slug = slugify(this.title, { lower: true, strict: true });
   }
-
-  if (this.markdown) {
-    this.sanitizedHtml = dompurify.sanitize(marked(this.markdown));
-  }
-
+  // if (this.markdown) {
+  //   this.sanitizedHtml = dompurify.sanitize(marked(this.markdown));
+  // }
   next();
 });
 
