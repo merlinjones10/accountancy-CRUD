@@ -20,7 +20,7 @@ router.get('/:slug', async (req, res) => {
 router.post(
   '/',
   async (req, res, next) => {
-    console.log(req.body);
+    // console.log(req.body);
     req.article = new Article();
     next();
   },
