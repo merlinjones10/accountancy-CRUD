@@ -21,21 +21,12 @@ app.get('/', async (req, res) => {
   let expenses = 0;
   try {
     const articles = await Article.find().sort({ createdAt: 'desc' });
-    (() => {
-      if (articles.length) {
-        articles.forEach((article) => {
-          if (article.type == 'income') {
-            income = income += article.number;
-          }
-          if (article.type == 'expense') {
-            expenses = expenses += article.number;
-          }
-        });
-      }
-    })();
+
+    let totals = calculateTotals(articles);
+    console.log(totals);
     res.render('articles/index', {
       articles: articles,
-      totals: { profit: income - expenses, income: income, expenses: expenses },
+      totals: totals,
     });
   } catch (err) {
     console.log(err);
