@@ -1,7 +1,3 @@
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const Article = require('../models/article');
-
 const calculateTotals = (articles) => {
   let income = 0;
   let expenses = 0;
@@ -19,3 +15,18 @@ const calculateTotals = (articles) => {
 };
 
 module.exports = calculateTotals;
+
+/* -------------------------------- GRAVEYARD ------------------------------- */
+/* --------------------------- Old invoked funcion -------------------------- */
+// (() => {
+//   if (articles.length) {
+//     articles.forEach((article) => {
+//       if (article.type == 'income') {
+//         income = income += article.number;
+//       }
+//       if (article.type == 'expense') {
+//         expenses = expenses += article.number;
+//       }
+//     });
+//   }
+// })();
