@@ -10,13 +10,15 @@
       crossorigin="anonymous"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Blog</title>
+    <title>Accounting</title>
   </head>
   <body>
     <div class="container">
-      <h1 class="mb-4">Blog Articles</h1>
-      <h3 class="mb-4">Profit: <%= total %></h3>
-      <a href="/articles/new" class="btn btn-success">New Article</a>
+      <h1 class="mb-4">Accounting</h1>
+      <h3 class="mb-4">Income: <%= total %></h3>
+      <h3 class="mb-4">Expenses: placeholder</h3>
+      <h3 class="mb-4">Profit: placeholder</h3>
+      <a href="/articles/new" class="btn btn-success d-block">New item</a>
 
       <% articles.forEach(article => { %>
       <div class="card mt-4">
@@ -27,7 +29,7 @@
           </div>
           <div class="card-text mb-2"><%= article.number %></div>
           <div class="card-text mb-2"><%= article.description %></div>
-          <a href="articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
+          <a href="articles/<%= article.slug %>" class="btn btn-primary">More info</a>
           <a href="articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
           <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
             <button type="submit" class="btn btn-danger">Delete</button>
