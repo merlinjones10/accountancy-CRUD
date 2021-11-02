@@ -20,7 +20,6 @@ app.get('/', async (req, res) => {
   try {
     const items = await Item.find().sort({ createdAt: 'desc' });
     const totals = calculateTotals(items);
-    console.log(totals);
 
     res.render('items/index', {
       items: items,
@@ -33,7 +32,7 @@ app.get('/', async (req, res) => {
 
 app.use('/items', itemRouter);
 
-app.listen(process.env.PORT);
+app.listen(3000);
 
 /* -------------------------------- GRAVEYARD ------------------------------- */
 // let totalExp = items.reduce((a, b) => ({ number: a.number + b.number }));

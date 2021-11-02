@@ -27,6 +27,7 @@
           <div class="card-subtitle text-muted mb-2">
             <%= item.createdAt.toLocaleDateString() %>
           </div>
+          <div class="card-text"><%= item.type %></div>
           <div class="card-text mb-2">
             <%= new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP'
             }).format(item.number) %>
