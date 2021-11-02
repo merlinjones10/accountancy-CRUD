@@ -32,7 +32,7 @@ app.get('/', async (req, res) => {
 
 app.use('/items', itemRouter);
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 /* -------------------------------- GRAVEYARD ------------------------------- */
 // let totalExp = items.reduce((a, b) => ({ number: a.number + b.number }));
