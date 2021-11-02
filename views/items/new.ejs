@@ -14,14 +14,9 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="mb-1"><%= article.title %></h1>
-      <h1 class="mb-1">Number: <%= article.number %></h1>
-      <h1 class="mb-1">Type: <%= article.type %></h1>
-      <div class="text-muted mb-2"><%= article.createdAt.toLocaleDateString() %></div>
-      <a href="/" class="btn btn-secondary">All Articles</a>
-      <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+      <h1 class="my-4">New item</h1>
 
-      <!-- <div><(%-) article.sanitizedHtml (%)></div> -->
+      <form action="/items" method="POST"><%- include('_form_fields') %></form>
     </div>
   </body>
 </html>
