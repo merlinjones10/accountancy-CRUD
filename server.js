@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Article = require('./models/Article');
-const articleRouter = require('./routes/articles');
+const Item = require('./models/Item');
+const itemRouter = require('./routes/items');
 const methodOverride = require('method-override');
 require('dotenv').config();
 const app = express();
@@ -17,15 +17,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 
 app.get('/', async (req, res) => {
-  let income = 0;
-  let expenses = 0;
   try {
-    const articles = await Article.find().sort({ createdAt: 'desc' });
-
-    let totals = calculateTotals(articles);
+    const items = await Item.find().sort({ createdAt: 'desc' });
+    const totals = calculateTotals(items);
     console.log(totals);
-    res.render('articles/index', {
-      articles: articles,
+
+    res.render('items/index', {
+      items: items,
       totals: totals,
     });
   } catch (err) {
@@ -33,9 +31,9 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.use('/articles', articleRouter);
+app.use('/items', itemRouter);
 
 app.listen(process.env.PORT);
 
 /* -------------------------------- GRAVEYARD ------------------------------- */
-// let totalExp = article.reduce((a, b) => ({ number: a.number + b.number }));
+// let totalExp = items.reduce((a, b) => ({ number: a.number + b.number }));
